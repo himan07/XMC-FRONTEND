@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "profession": "Doctor/HCP"
+  },
+  {
+    "id": 2,
+    "profession": "Nursing"
+  },
+  {
+    "id": 3,
+    "profession": "Lab Tech (Radio)"
+  },
+  {
+    "id": 4,
+    "profession": "Non Clinical HCP"
+  },
+  {
+    "id": 5,
+    "profession": "Pharmacy"
+  },
+  {
+    "id": 6,
+    "profession": "Public Health"
+  },
+  {
+    "id": 7,
+    "profession": "Medical Student"
+  }
+]

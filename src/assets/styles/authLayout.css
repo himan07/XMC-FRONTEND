@@ -1,0 +1,64 @@
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #a4c8ee 0%,
+    #d9eaef 100%
+  );
+}
+
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+.form-container {
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(46, 104, 174, 0.5) transparent;
+}
+
+.form-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background-color: rgba(46, 104, 174, 0.5);
+  border-radius: 3px;
+}
+
+.terms-text {
+  color: rgba(46, 104, 174, 1);
+  text-decoration: none;
+}
+
+.terms-text:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 960px) {
+  .form-container {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 961px) {
+  .form-container {
+    padding: 25px;
+  }
+}
