@@ -8,14 +8,12 @@ import {
   InputAdornment,
   Paper,
   Popper,
+  TextField,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import InputField from "../../../components/InputField/InputField";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import professions from "../../../dev-data/Profession.json";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -243,28 +241,36 @@ const PersonalDetails = ({ setActiveStep }) => {
             />
           </Box>
           <Box sx={{ width: "100%" }}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                value={selectedDate}
-                onChange={(newValue) => {
-                  setSelectedDate(newValue);
-                }}
-                renderInput={(params) => (
-                  <InputField
-                    size="small"
-                    {...params}
-                    placeholder="Date Of Birth"
-                    fullWidth
-                    register={{
-                      ...register("dateOfBirth", dobValidation(watch)),
-                    }}
-                    errors={errors.dateOfBirth}
-                  />
-                )}
-                minDate={new Date("01-01-1900")}
-                maxDate={new Date()}
-              />
-            </LocalizationProvider>
+            <Controller
+              name="dateOfBirth"
+              control={control}
+              defaultValue=""
+              rules={{
+                // Either call your dobValidation function without needing watch,
+                // or simply use required validation:
+                required: "Date of birth is required",
+                // ...you can add more rules if needed
+              }}
+              render={({ field: { onChange, value, ref } }) => (
+                <TextField
+                  type="date"
+                  size="small"
+                  fullWidth
+                  value={value}
+                  onChange={onChange}
+                  inputRef={ref}
+                  InputLabelProps={{ shrink: true }}
+                  inputProps={{
+                    min: "1900-01-01",
+                    max: new Date().toISOString().split("T")[0],
+                  }}
+                  error={Boolean(errors.dateOfBirth)}
+                  helperText={
+                    errors.dateOfBirth ? errors.dateOfBirth.message : ""
+                  }
+                />
+              )}
+            />
           </Box>
           <Box>
             <Autocomplete
