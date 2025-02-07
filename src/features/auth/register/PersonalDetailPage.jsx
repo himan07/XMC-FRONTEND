@@ -246,10 +246,7 @@ const PersonalDetails = ({ setActiveStep }) => {
               control={control}
               defaultValue=""
               rules={{
-                // Either call your dobValidation function without needing watch,
-                // or simply use required validation:
                 required: "Date of birth is required",
-                // ...you can add more rules if needed
               }}
               render={({ field: { onChange, value, ref } }) => (
                 <TextField

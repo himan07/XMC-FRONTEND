@@ -39,7 +39,7 @@ const ProfessionalDetails = ({ setActiveStep }) => {
 
     try {
       const response = await axios.post(
-        "https://xmc-backend-1.onrender.com//api/uploadImage",
+        "https://xmc-backend-1.onrender.com/api/uploadImage",
         formData
       );
 
