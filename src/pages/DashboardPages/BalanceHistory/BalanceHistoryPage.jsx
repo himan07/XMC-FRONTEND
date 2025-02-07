@@ -48,8 +48,8 @@ const BalanceHistory = ({
       countryCode === "+91"
         ? "India"
         : countryCode === "+1"
-          ? "United States"
-          : "Other",
+        ? "United States"
+        : "Other",
     requestedAmount: rewardAmount,
     upiId: upiId,
     userId: userData?.data?.uuid,
@@ -62,7 +62,7 @@ const BalanceHistory = ({
   const RedeemAmount = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:3000/api/user/redemption",
+        "https://xmc-backend-1.onrender.com/api/user/redemption",
         redeemBody,
         {
           headers: {
@@ -123,8 +123,8 @@ const BalanceHistory = ({
               {countryCode === "+91"
                 ? `₹ ${finalBalance || 0}`
                 : countryCode === "+1"
-                  ? `$ ${finalBalance || 0}`
-                  : "NA 0"}
+                ? `$ ${finalBalance || 0}`
+                : "NA 0"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Current Balance
@@ -136,7 +136,7 @@ const BalanceHistory = ({
                 marginTop: 10,
                 textTransform: "none",
                 backgroundColor:
-                finalBalance <= 0 ? "#ddd" : "rgba(46, 104, 174, 1)",
+                  finalBalance <= 0 ? "#ddd" : "rgba(46, 104, 174, 1)",
                 borderRadius: "8px",
               }}
               size="medium"
@@ -202,19 +202,20 @@ const BalanceHistory = ({
                         survey.surveyApprovalStatus?.approve
                           ? "Approved"
                           : survey.redemptionStatus?.reject
-                            ? "Rejected"
-                            : survey.redemptionStatus?.approve
-                              ? "Processed"
-                              : "Processing"
+                          ? "Rejected"
+                          : survey.redemptionStatus?.approve
+                          ? "Processed"
+                          : "Processing"
                       }
                       size="small"
                       color={
                         survey.surveyApprovalStatus?.approve
                           ? "success"
                           : survey.redemptionStatus?.reject
-                            ? "error":survey.redemptionStatus?.approve
-                            ? "error"
-                            : "default"
+                          ? "error"
+                          : survey.redemptionStatus?.approve
+                          ? "error"
+                          : "default"
                       }
                       sx={{
                         marginRight: isSmallScreen ? 0 : theme.spacing(1),
@@ -228,20 +229,21 @@ const BalanceHistory = ({
                         survey.surveyApprovalStatus?.approve
                           ? "rgba(0, 180, 3, 1)"
                           : survey.redemptionStatus?.reject
-                            ? "error":survey.redemptionStatus?.approve
-                            ? "error"
-                            : "text.secondary"
+                          ? "error"
+                          : survey.redemptionStatus?.approve
+                          ? "error"
+                          : "text.secondary"
                       }
                     >
                       {survey.requestedAmount && countryCode === "+91"
                         ? `-₹${survey.requestedAmount}`
                         : survey.requestedAmount && countryCode === "+1"
-                          ? `-$${survey.requestedAmount}`
-                          : survey.cpi
-                            ? countryCode === "+1"
-                              ? `+$${survey.cpi}`
-                              : `+₹${(85.85 * survey.cpi).toFixed(2)}`
-                            : "N/A"}
+                        ? `-$${survey.requestedAmount}`
+                        : survey.cpi
+                        ? countryCode === "+1"
+                          ? `+$${survey.cpi}`
+                          : `+₹${(85.85 * survey.cpi).toFixed(2)}`
+                        : "N/A"}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -282,8 +284,8 @@ const BalanceHistory = ({
             {countryCode === "+91"
               ? `₹ ${finalBalance || 0}`
               : countryCode === "+1"
-                ? `$ ${finalBalance || 0}`
-                : "NA 0"}
+              ? `$ ${finalBalance || 0}`
+              : "NA 0"}
           </Typography>
           <InputField placeholder="UPI ID/Paypal ID" onChange={handleUpiId} />
           <Button

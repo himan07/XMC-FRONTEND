@@ -97,7 +97,7 @@ const Login = () => {
         if (result?.status === "complete" && result.createdSessionId) {
           await setActive?.({ session: result.createdSessionId });
           await axios
-            .get("http://127.0.0.1:3000/getUsers", {
+            .get("https://xmc-backend-1.onrender.com/getUsers", {
               headers: {
                 Authorization: `Bearer ${jwtToken}`,
                 Email: email,

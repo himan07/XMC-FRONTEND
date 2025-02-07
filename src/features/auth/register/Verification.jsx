@@ -87,7 +87,7 @@ const Verification = ({ setActiveStep }) => {
       };
 
       const response = await axios.post(
-        "http://127.0.0.1:3000/create-personalInfo",
+        "https://xmc-backend-1.onrender.com//create-personalInfo",
         personalInfo
       );
 
