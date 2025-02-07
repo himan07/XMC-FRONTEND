@@ -84,7 +84,9 @@ const Dashboard = () => {
     async (uuid, countryCode) => {
       try {
         const { data } = await axios.get(
-          "/marketxcel/webservices/supplier/send_supplier_data",
+          `${process.env.NODE_ENV === 'production'
+            ? 'https://api.marketxcel.co.in'
+            : ''}/marketxcel/webservices/supplier/send_supplier_data`,
           {
             headers: {
               SupplierId: "ff6a9e1fd6608945d4e4dca7ded50e85",
