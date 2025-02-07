@@ -56,7 +56,7 @@ const Dashboard = () => {
       const { data } = await api.get("/getUsers", {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
-          Email: email,
+          Email: email ? email : "himanshu.yadav@market-xcel.com",
         },
       });
 
@@ -83,19 +83,16 @@ const Dashboard = () => {
   const fetchSupplierData = useCallback(
     async (uuid, countryCode) => {
       try {
-        const apiUrl =
-        import.meta.env.MODE === "development"
-          ? "/api/supplier/send_supplier_data"
-          : "https://api-pyyye61kc-himanshus-projects-349b1cb7.vercel.app";
-
-      const { data } = await axios.get(apiUrl, {
-        headers: {
-          SupplierId: "ff6a9e1fd6608945d4e4dca7ded50e85",
-          Token: "Bearer 06c4e3995dafe6d7fd4afafa4ea2384d",
-          uid: uuid,
-        },
-        params: { uuid, countryCode },
-      });
+        const { data } = await axios.get(
+          "/marketxcel/webservices/supplier/send_supplier_data",
+          {
+            headers: {
+              SupplierId: "ff6a9e1fd6608945d4e4dca7ded50e85",
+              Token: "Bearer 06c4e3995dafe6d7fd4afafa4ea2384d",
+              uid: uuid,
+            },
+          }
+        );
 
         const filteredData = data?.Data?.filter(
           (item) =>
